@@ -1,47 +1,25 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
- * Converts a binary number represented as a string to an unsigned integer.
+ * binary_to_uint - Convert a binary string to an unsigned integer.
+ * @b: String containing the binary number.
  *
- * @param b The binary string to convert.
- * @return The converted number, or 0 if there are invalid characters or NULL pointer.
+ * Return: The converted unsigned integer or 0 if there's an error.
  */
 unsigned int binary_to_uint(const char *b)
 {
-	if (b == NULL)
-		return (0);  /* Handle the case where b is NULL */
-
+	int i;
 	unsigned int result = 0;
-	int i = 0;
 
-	while (b[i] != '\0')
-	{/* Check if the current character is not '0' or '1' */
-	if (b[i] != '0' && b[i] != '1')
+	if (!b)
+		return (0);
+
+	for (i = 0; b[i]; i++)
 	{
-		return (0);  /* Invalid character found, return 0 */
+		if (b[i] < '0' || b[i] > '1')
+			return (0);
+		result = 2 * result + (b[i] - '0');
 	}
-	result = result * 2 + (b[i] - '0');
-	i++;
-	}
+
 	return (result);
-}
-
-/**
- * Main function to test the binary_to_uint function.
- */
-int main(void)
-{
-	const char *binary_str = "1010101";
-	unsigned int result = binary_to_uint(binary_str);
-
-	if (result == 0)
-	{
-		printf("Invalid binary string or NULL pointer.\n");
-	}
-	else
-	{
-		printf("Converted value: %u\n", result);
-	}
-
-	return (0);
 }
