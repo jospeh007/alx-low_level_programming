@@ -1,8 +1,7 @@
-#include "lists.h"i
-
+#include "lists.h"
 
 /**
- * insert_dnodeint_at_index - returns the nth node of a dlistint_t linked list.
+ * insert_dnodeint_at_index - returns the node of a dlistint_t linked list.
  * @h: A pointer to the head of the list
  * @idx: The index to insert the new node
  * @n: The int for the new node
